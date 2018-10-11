@@ -5,9 +5,11 @@ import './style.less';
 class PickerColumn extends Component {
   static propTypes = {
     options: PropTypes.array.isRequired,
-    texts: PropTypes.array.isRequired,
     name: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
+    // texts: PropTypes.array.isRequired,
+    // title: PropTypes.string.isRequired,
+    texts: PropTypes.array,
+    title: PropTypes.string,
     value: PropTypes.any.isRequired,
     itemHeight: PropTypes.number.isRequired,
     columnHeight: PropTypes.number.isRequired,
@@ -162,6 +164,9 @@ class PickerColumn extends Component {
         height: itemHeight + 'px',
         lineHeight: itemHeight + 'px'
       };
+      console.log('renderItems');
+      console.log(texts[index]);
+      console.log(option);
       const className = `picker-item${option === value ? ' picker-item-selected' : ''}`;
       return (
         <div
@@ -174,6 +179,8 @@ class PickerColumn extends Component {
   }
 
   render() {
+    console.log('column.render');
+    console.log(this.props.title);
     const translateString = `translate3d(0, ${this.state.scrollerTranslate}px, 0)`;
     const style = {
       MsTransform: translateString,
@@ -208,8 +215,10 @@ export default class Picker extends Component {
   static propTyps = {
     optionGroups: PropTypes.object.isRequired,
     valueGroups: PropTypes.object.isRequired,
-    titleGroups: PropTypes.object.isRequired,
-    textGroups: PropTypes.object.isRequired,
+    titleGroups: PropTypes.object,
+    textGroups: PropTypes.object,
+    // titleGroups: PropTypes.object.isRequired,
+    // textGroups: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
     itemHeight: PropTypes.number,
     height: PropTypes.number
@@ -222,6 +231,9 @@ export default class Picker extends Component {
 
   renderInner() {
     const { optionGroups, titleGroups, textGroups, valueGroups, itemHeight, height, onChange } = this.props;
+    console.log('renderInner');
+    console.log(titleGroups);
+    console.log(textGroups);
     const highlightStyle = {
       height: itemHeight,
       marginTop: -(itemHeight / 2)
