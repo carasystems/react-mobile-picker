@@ -7,7 +7,6 @@ class PickerColumn extends Component {
     options: PropTypes.array.isRequired,
     texts: PropTypes.array.isRequired,
     name: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
     value: PropTypes.any.isRequired,
     itemHeight: PropTypes.number.isRequired,
     columnHeight: PropTypes.number.isRequired,
@@ -187,7 +186,6 @@ class PickerColumn extends Component {
     }
     return (
       <div className="picker-column">
-        <p className="picker-column-title">{this.props.title}</p>
         <div
           className="picker-scroller"
           style={style}
@@ -208,7 +206,6 @@ export default class Picker extends Component {
   static propTyps = {
     optionGroups: PropTypes.object.isRequired,
     valueGroups: PropTypes.object.isRequired,
-    titleGroups: PropTypes.object.isRequired,
     textGroups: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
     itemHeight: PropTypes.number,
@@ -221,7 +218,7 @@ export default class Picker extends Component {
   };
 
   renderInner() {
-    const { optionGroups, titleGroups, textGroups, valueGroups, itemHeight, height, onChange } = this.props;
+    const { optionGroups, textGroups, valueGroups, itemHeight, height, onChange } = this.props;
     const highlightStyle = {
       height: itemHeight,
       marginTop: -(itemHeight / 2)
@@ -235,7 +232,6 @@ export default class Picker extends Component {
           options={optionGroups[name]}
           texts={textGroups[name]}
           value={valueGroups[name]}
-          title={titleGroups[name]}
           itemHeight={itemHeight}
           columnHeight={height}
           onChange={onChange} />
