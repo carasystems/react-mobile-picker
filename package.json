@@ -7,10 +7,6 @@
     "type": "git",
     "url": "sielay/react-mobile-picker"
   },
-  "dependencies": {
-    "react": "^0.14.3",
-    "react-dom": "~0.14.7"
-  },
   "files": [
     "LICENCE",
     "README.md",
@@ -43,6 +39,8 @@
     "express": "^4.13.3",
     "less": "^2.5.3",
     "less-loader": "^2.2.2",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
     "react-transform-catch-errors": "^1.0.0",
     "react-transform-hmr": "^1.0.1",
     "redbox-react": "^1.2.0",
@@ -52,12 +50,18 @@
     "webpack-dev-middleware": "^1.4.0",
     "webpack-hot-middleware": "^2.6.0"
   },
+  "peerDependencies": {
+    "react": ">=0.14.0 <17.0.0",
+    "react-dom": ">=0.14.0 <17.0.0",
+    "prop-types": "^15.6.0"
+  },
   "scripts": {
     "clean": "rimraf lib",
     "start": "node examples/server.js",
     "lint": "eslint src",
     "build-examples": "rimraf examples/dist && eslint examples && set NODE_ENV=production && webpack --progress --hide-modules --config examples/webpack.build.js",
-    "build": "npm run clean && npm run lint && set NODE_ENV=production && webpack --progress --hide-modules --config webpack.build.js"
+    "build": "npm run clean && npm run lint && set NODE_ENV=production && webpack --progress --hide-modules --config webpack.build.js",
+    "test": "npm run lint"
   },
   "author": {
     "name": "Lei Lei",
