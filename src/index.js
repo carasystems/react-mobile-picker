@@ -174,9 +174,6 @@ class PickerColumn extends Component {
   }
 
   render() {
-    console.log('column render');
-    console.log(this.props.title);
-    console.log(this.props.texts);
     const translateString = `translate3d(0, ${this.state.scrollerTranslate}px, 0)`;
     const style = {
       MsTransform: translateString,
@@ -225,9 +222,6 @@ export default class Picker extends Component {
 
   renderInner() {
     const { optionGroups, titleGroups, textGroups, valueGroups, itemHeight, height, onChange } = this.props;
-    console.log('renderInner');
-    console.log(titleGroups);
-    console.log(textGroups);
     const highlightStyle = {
       height: itemHeight,
       marginTop: -(itemHeight / 2)
