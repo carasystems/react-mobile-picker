@@ -5,6 +5,7 @@ import './style.less';
 class PickerColumn extends Component {
   static propTypes = {
     options: PropTypes.array.isRequired,
+    texts: PropTypes.array.isRequired,
     name: PropTypes.string.isRequired,
     value: PropTypes.any.isRequired,
     itemHeight: PropTypes.number.isRequired,
@@ -154,7 +155,7 @@ class PickerColumn extends Component {
   };
 
   renderItems() {
-    const { options, itemHeight, value } = this.props;
+    const { options, texts, itemHeight, value } = this.props;
     return options.map((option, index) => {
       const style = {
         height: itemHeight + 'px',
@@ -166,7 +167,7 @@ class PickerColumn extends Component {
           key={index}
           className={className}
           style={style}
-          onClick={() => this.handleItemClick(option)}>{option}</div>
+          onClick={() => this.handleItemClick(option)}>{texts[index]}</div>
       );
     });
   }
@@ -205,6 +206,7 @@ export default class Picker extends Component {
   static propTyps = {
     optionGroups: PropTypes.object.isRequired,
     valueGroups: PropTypes.object.isRequired,
+    textGroups: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
     itemHeight: PropTypes.number,
     height: PropTypes.number
@@ -216,7 +218,7 @@ export default class Picker extends Component {
   };
 
   renderInner() {
-    const { optionGroups, valueGroups, itemHeight, height, onChange } = this.props;
+    const { optionGroups, textGroups, valueGroups, itemHeight, height, onChange } = this.props;
     const highlightStyle = {
       height: itemHeight,
       marginTop: -(itemHeight / 2)
@@ -228,6 +230,7 @@ export default class Picker extends Component {
           key={name}
           name={name}
           options={optionGroups[name]}
+          texts={textGroups[name]}
           value={valueGroups[name]}
           itemHeight={itemHeight}
           columnHeight={height}
